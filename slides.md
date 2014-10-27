@@ -1,6 +1,10 @@
-% Clean DB schemas
+% From PHP to Scala
 % Clément Delafargue
-% BDX.IO 2014-10-17
+% scala.io 2014-10-23
+
+-------------------------------------------
+
+![](assets/clever.jpg)
 
 -------------------------------------------
 
@@ -8,242 +12,56 @@
 
 
 
-# SQL Database schemas
-![](assets/schema.jpg)
+# Back in the 00s
+![](assets/bojack.png)
 
+# I was a PHP developer
+<video src="../../stuff-indexes/lol/elephant-beach.webm" autoplay loop/>
 
-# Write your schema yourself
-![](assets/robot-door.gif)
+# Why leave PHP
+<video src="../../stuff-indexes/lol/elephant-skydiving.webm" autoplay loop/>
 
+# No types
+<video src="../../stuff-indexes/lol/shape-toy.webm" autoplay loop/>
 
-# DB-agnosticism
-![](assets/trap.gif)
+# HTTP is hidden
+<video src="../../stuff-indexes/lol/no-idea.webm" autoplay loop/>
 
+# Simplicity is valued
 
-# Use postgreSQL
-![](assets/elephant-jump.gif)
+# But PHP is awfully complex
+<video src="../../stuff-indexes/lol/rube-goldberg.webm" autoplay loop/>
 
-# Shameless plug
-![](assets/austin-omg.gif)
+# What PHP did well
+<video src="../../stuff-indexes/lol/elephant-ribbon.webm" autoplay loop/>
 
+# Values Simplicity
 
+# Stateless
+<video src="../../stuff-indexes/lol/chain.webm" autoplay loop/>
 
-# Avoid ORMs
-![](assets/rube-goldberg.gif)
+# Request - response cycle
+<video src="../../stuff-indexes/lol/chain.webm" autoplay loop/>
 
--------------------------------------------
-
-**But please use data mapping libraries**
-
-Pomm (PHP), anorm / slick (scala), …
-
-
-
-# Normal Forms
-![](assets/academics.jpg)
-
-# Design with Querying in mind
-
-# Primary Keys
-
-#Use UUIDs
-
-(or random IDs)
-
-# Prevent entity enumeration
-![](assets/hacking.gif)
-
-# Prevent growth rate disclosure
-![](assets/hacking.gif)
-
-# Avoid linking the wrong table
-![](assets/table-flip.gif)
-
-
-# Default to not null
-![](assets/no-value.png)
-
-# Don't fear the join
-![](assets/elephants.gif)
-
-# Avoid deletions
-![](assets/delete.gif)
-
-# Avoid deletions
-
-```sqlpostgresql
-created_at
-    timestamp with time zone not null,
-deleted_at
-    timestamp with time zone
-```
-
-# Singular table names
+# Alien in a Java world
+<video src="../../stuff-indexes/lol/garbage.webm" autoplay loop/>
 
 -------------------------------------------
+![](assets/lift.jpg)
 
-**Uniform naming for PKs & FKs**
+# Play Framework
 
-
-    <table_name>_id
-
--------------------------------------------
-
-**Uniform naming for PKs & FKs**
-
-```sqlpostgresql
-select <fields> from
-  table_1
-  inner join table_2
-    on table_1.table_1_id =
-       table_2.table_2_id
-```
-
--------------------------------------------
-
-**Uniform naming for PKs & FKs**
-
-```sqlpostgresql
-select <fields> from
-  table_1
-  inner join table_2
-    using (table_1_id)
-```
--------------------------------------------
-
-**Uniform naming for PKs & FKs**
-
-```sqlpostgresql
-select <fields> from
-  table_1
-  natural join table_2
-```
-
--------------------------------------------
-
-**Use enums**
-
-```sqlpostgresql
-create type status
-as enum('pending', 'validated');
-```
+# Now it's gearing towards complexity
+<video src="../../stuff-indexes/lol/homer-car.webm" autoplay loop/>
 
 
--------------------------------------------
+# Keep it simple
 
-**Use rich types**
+# Libraries, not frameworks
+<video src="../../stuff-indexes/lol/hair-cow.webm" autoplay loop/>
 
-    inet (IP address)
-    timestamp with time zone
-    point (2D point)
-    tstzrange (time range)
-    interval (duration)
+# HTTP layer, not more
+<video src="../../stuff-indexes/lol/hamster-tube.webm" autoplay loop/>
 
--------------------------------------------
-
-**Create your own**
-
-```sqlpostgresql
-    create type my type
-    as (
-        field1 int,
-        field2 text
-    );
-```
-
--------------------------------------------
-
-**Use arrays**
-
-```sqlpostgresql
-    select '{1,2,3}'::int[]
-```
-
--------------------------------------------
-
-**Rich types => powerful constraints**
-
-```sqlpostgresql
-create table reservation(
-    reservation_id uuid primary key,
-    dates tstzrange not null,
-    exclude using gist (dates with &&)
-);
-```
-# You can dump K/V data
-![](assets/shape-toy.gif)
-
-# You can dump JSON data
-![](assets/shape-toy.gif)
-
--------------------------------------------
-
-**Common Table Expressions**
-
-```sqlpostgresql
-with sub_request as (
-    select <fields> from table1
-)
-
-select <fields> from sub_request;
-```
-
-# Shameless plug
-![](assets/austin-omg.gif)
-
-
-
-# jDbT
-
-<https://github.com/divarvel/jdbt>
-
--------------------------------------------
-
-**jDbT**
-
-```yaml
-status:
-  - Test
-  - Prod
-
-member:
-  name: text
-  email: text
-  status: status | 'Test'
-  __unique: [ name, email ]
-```
-
--------------------------------------------
-
-**jDbT**
-
-```yaml
-post:
-  member_id:
-  +?title: text
-  ?content: text
-
-tag:
-    +name: text
-    __check: name <> 'forbidden'
-```
-
--------------------------------------------
-
-**jDbT**
-
-```yaml
-post_tag:
-    post_id:
-    tag_id:
-    __pk: [ tag_id, post_id ]
-```
-
--------------------------------------------
-
-**jDbT**
-
-![](assets/schema.png)
-
-
-# Thanks
+# Don't try to hide complexity
+<video src="../../stuff-indexes/lol/exploding-poo.webm" autoplay loop/>
